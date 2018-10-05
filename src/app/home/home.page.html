@@ -4,7 +4,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!--
   The world is your oyster.
   <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+
+  <app-sizer [(size)]="fontSizePx"></app-sizer>
+  <div [style.font-size.px]="fontSizePx">Resizable Text</div>
+  -->
+  <ion-card *ngFor="let user of users">
+    <ion-item lines="full" color="primary" text-center>
+        <ion-label>
+            <strong>{{ user.name.first | titlecase }}&nbsp;{{ user.name.last | titlecase }}</strong>
+            <br/>
+            <small>{{ user.email }}</small>
+        </ion-label>
+    </ion-item>
+    <ion-card-content text-center>
+      <ion-avatar class='avatar' size="large">
+        <img [src]="user.picture.large" />
+      </ion-avatar>
+      <br/>
+      <ion-text>
+        DOB: {{ user.dob.date | date }}
+      </ion-text>
+    </ion-card-content>
+    <ion-item lines="full" color="light">
+        <ion-button slot="start" size="small" fill="clear" color="dark" disabled="true">
+            <ion-icon name="male" *ngIf="user.gender=='male'"></ion-icon>
+            <ion-icon name="female" *ngIf="user.gender=='female'"></ion-icon>
+        </ion-button>
+        <ion-buttons slot="end">
+            <ion-button size="small" fill="clear" color="dark" disabled="true">
+                <ion-icon name="thumbs-up"></ion-icon>&nbsp;1
+            </ion-button>
+            <ion-button size="small" fill="clear" color="dark" disabled="true">
+                <ion-icon name="chatbubbles"></ion-icon>&nbsp;1
+            </ion-button>
+        </ion-buttons>
+    </ion-item>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -78,8 +78,13 @@
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
-    <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.3.1">
+        <variable name="REVERSE_CLIENT_ID" value="com.googleusercontent.apps.582049191065-aciieopf5t8n3rai6tsjnue1f5mff82b" />
+    </plugin>
+    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
 </widget>
